@@ -1,31 +1,91 @@
+# Sensorer - lyd, lys og bevegelse
 
-> Åpne denne siden på [https://broccolisurprise.github.io/smarthus---sensorer/](https://broccolisurprise.github.io/smarthus---sensorer/)
+## Step 1@showdialog
+Å programmere micro:biten til å reagere på høye lyder og risting er lett med de vanlige blokkene vi finner i Input-menyen:
+ ```blocks
+ input.onGesture(Gesture.Shake, function () {
+	
+})
+input.onSound(DetectedSound.Loud, function () {
+	
+})
 
-## Bruk som utvidelse
+```
+Dessverre gir ikke disse blokkene oss mulighet til å være særlig presise, og det finnes ikke slike blokker til de andre sensorene (som lys og temperatur)
 
-Dette kodeområdet kan bli lagt til som en **utvidelse** i MakeCode.
 
-* åpne [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* klikk på **Nytt prosjekt**
-* klikk på **Utvidelser** i menyen under tannhjulet
-* søk etter **https://github.com/broccolisurprise/smarthus---sensorer** og importér
+## Step 2@showdialog
+Hvordan er lyden i klasserommet? La oss gjøre et eksperiment og måle med micro:biten. 
 
-## Rediger dette prosjektet ![Bygg statusmerke](https://github.com/broccolisurprise/smarthus---sensorer/workflows/MakeCode/badge.svg)
+ ```blocks
+basic.forever(function () {
+    led.plotBarGraph(
+    input.soundLevel(),
+    255
+    )
+})
 
-For å redigere dette kodeområdet i MakeCode.
+```
+## Step 2
+Bygg dette lille programmet og last ned til micro:biten. Hva skjer?
 
-* åpne [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* klikk på **Importer** og så på **Importér URL**
-* lim inn **https://github.com/broccolisurprise/smarthus---sensorer** og klikk på importér
+(Trykk på lyspæren for å se fasiten.)
 
-## Forhåndsvisning av blokker
+ ```blocks
+basic.forever(function () {
+    led.plotBarGraph(
+    input.soundLevel(),
+    255
+    )
+})
 
-Dette bildet viser blokk-koden fra den siste oppdateringen i hovedgrenen.
-Dette bildet kan ta noen minutter å oppdatere.
+```
 
-![En opptegnet visning av blokkene](https://github.com/broccolisurprise/smarthus---sensorer/raw/master/.github/makecode/blocks.png)
+## Step bro@showdialog
+Alle verdiene micro:biten måler med sensorene, er tall-verdier. Dette gir oss muligheten til å bruke de på mange måter:
 
-#### Metadata (brukes for søk, visualisering)
+```blocks
+input.onButtonPressed(Button.A, function () {
+    basic.showNumber(input.soundLevel())
+    basic.showNumber(input.lightLevel() + input.temperature())
+    basic.showNumber(Math.sqrt(input.acceleration(Dimension.X)))
+})
+```
 
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+## Step ping 
+Endre programmet slik at micro:biten piper når det er mørkt.
+
+(Trykk på lyspæren for å se fasiten.)
+
+```blocks
+basic.forever(function () {
+    if (input.lightLevel() < 100) {
+        music.playSoundEffect(music.createSoundEffect(WaveShape.Sawtooth, 3749, 4641, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), SoundExpressionPlayMode.UntilDone)
+    }
+})
+```
+```template
+basic.forever(function () {
+    if (input.lightLevel() < 100) {
+        music.playSoundEffect(music.createSoundEffect(WaveShape.Sawtooth, 3749, 4641, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), SoundExpressionPlayMode.UntilDone)
+    }
+})
+```
+
+
+
+## Step 2i3
+
+Godt jobbet! Nå har dere kanskje begynt å få noen ideer om hvordan smarthuset deres skal oppføre seg.
+
+Trykk "Slutt/Finish" for å avslutte veiledningen.
+
+
+```template
+basic.forever(function ()){}
+```
+
+```ghost
+basic.showNumber(input.lightLevel())
+    basic.showNumber(input.acceleration(Dimension.X))
+```
