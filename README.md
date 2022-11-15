@@ -26,6 +26,8 @@ basic.forever(function () {
 })
 
 ```
+Last ned programmet og undersøk micro:biten. Hva skjer?
+
 ## Step 2
 Bygg dette lille programmet og last ned til micro:biten. Hva skjer?
 
@@ -53,7 +55,7 @@ input.onButtonPressed(Button.A, function () {
 ```
 
 ## Step ping 
-Endre programmet slik at micro:biten piper når det er mørkt.
+Endre programmet slik at micro:biten piper når det er **mørkt.** (Lysnivå mindre enn 100)
 
 (Trykk på lyspæren for å se fasiten.)
 
@@ -76,7 +78,7 @@ basic.forever(function () {
 
 ## Step 2i3
 
-Godt jobbet! Nå har dere kanskje begynt å få noen ideer om hvordan smarthuset deres skal oppføre seg.
+Godt jobbet! Nå har dere kanskje begynt å få noen ideer om hvordan smarthuset kan automatiseres.
 
 Trykk "Slutt/Finish" for å avslutte veiledningen.
 
