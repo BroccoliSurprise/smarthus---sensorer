@@ -90,4 +90,13 @@ basic.forever(function ()){}
 ```ghost
 basic.showNumber(input.lightLevel())
     basic.showNumber(input.acceleration(Dimension.X))
+basic.showLeds(`
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    `)
+basic.showString("Hello!")
+basic.showIcon(IconNames.Heart)
 ```
